@@ -1,0 +1,32 @@
+-- Power BI DAX measures
+
+Total Patients = COUNTROWS(healthcare_records)
+Average Age = AVERAGE(healthcare_records[Age])
+Total Billing = SUM(healthcare_records[Billing_Amount])
+Average Billing = AVERAGE(healthcare_records[Billing_Amount])
+Average Length of Stay = AVERAGE(healthcare_records[Length_of_Stay])
+
+Abnormal Tests =
+CALCULATE([Total Patients], healthcare_records[Test_Results] = "Abnormal")
+
+Abnormal Test Rate = DIVIDE([Abnormal Tests], [Total Patients], 0)
+
+Emergency Admissions =
+CALCULATE([Total Patients], healthcare_records[Admission_Type] = "Emergency")
+
+Urgent Admissions =
+CALCULATE([Total Patients], healthcare_records[Admission_Type] = "Urgent")
+
+Elective Admissions =
+CALCULATE([Total Patients], healthcare_records[Admission_Type] = "Elective")
+
+Avg Billing per Patient = DIVIDE([Total Billing], [Total Patients], 0)
+
+-- Date table
+Date = CALENDAR(MIN(healthcare_records[Date_of_Admission]), MAX(healthcare_records[Date_of_Admission]))
+Year = YEAR('Date'[Date])
+Month = FORMAT('Date'[Date], "MMM")
+Month Number = MONTH('Date'[Date])
+Year Month = FORMAT('Date'[Date], "YYYY-MM")
+
+-- Relationship: Date[Date] -> healthcare_records[Date_of_Admission]
