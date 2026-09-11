@@ -1,0 +1,2 @@
+Age,Gender,Blood_Type,Medical_Condition,Date_of_Admission,Hospital,Insurance_Provider,Billing_Amount,Room_Number,Admission_Type,Discharge_Date,Medication,Test_Results,Length_of_Stay
+81,Female,O-,Diabetes,2022-11-17,Wallace-Hamilton,Medicare,37490.98336352819,146,Elective,2022-12-01,Aspirin,Inconclusive,14
